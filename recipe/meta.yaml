@@ -26,6 +26,7 @@ requirements:
     - psycopg2-binary
     - pymysql
     - cryptography
+    - python-lmdb
 
 test:
   imports:
