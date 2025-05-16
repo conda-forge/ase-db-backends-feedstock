@@ -1,5 +1,5 @@
 {% set name = "ase-db-backends" %}
-{% set version = "0.9.0" %}
+{% set version = "0.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ase_db_backends-{{ version }}.tar.gz
-  sha256: f5a53caf178039aaf6e50bf3f6f35d8b73283a30674e7a49afcb29ce3c0b423f
+  sha256: fef98a88f47b8075c1f5aa068205009acdacbfa446e508077c2c477dc105079a
 
 build:
   noarch: python
@@ -26,6 +26,7 @@ requirements:
     - psycopg2-binary
     - pymysql
     - cryptography
+    - python-lmdb
 
 test:
   imports:
