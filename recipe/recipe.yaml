@@ -1,0 +1,49 @@
+schema_version: 1
+
+context:
+  name: ase-db-backends
+  version: "0.11.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/ase_db_backends-${{ version }}.tar.gz
+  sha256: 8575938eaf7708a52eb951c6f955f39082fa79c8332f4568715dacb8e733717a
+
+build:
+  number: 1
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - setuptools >=61.0
+    - pip
+  run:
+    - python >=${{ python_min }}
+    - ase
+    - numpy
+    - psycopg2-binary
+    - pymysql
+    - cryptography
+    - python-lmdb
+
+tests:
+  - python:
+      imports:
+        - ase_db_backends
+      pip_check: true
+      python_version: ${{ python_min }}
+
+about:
+  summary: ASE-DB backends
+  license: LGPL-2.1-only
+  license_file: LICENSE
+  homepage: https://gitlab.com/ase/ase-db-backends
+
+extra:
+  recipe-maintainers:
+    - jan-janssen
